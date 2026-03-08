@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Afriza ❤️ - Fullscreen Polaroid</title>
+<title>For Afriza ❤️ - Fullscreen Slideshow</title>
 <style>
 body {
   margin: 0;
   background: #0f0f0f;
   font-family: Arial, sans-serif;
-  overflow: hidden;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 /* HEART PARTICLES */
@@ -29,41 +29,35 @@ body {
 
 /* CONTAINER */
 .container {
-  width: 100vw;
-  height: 100vh;
+  width: 90vw;
+  max-width: 500px;
+  height: 90vh;
+  max-height: 600px;
   position: relative;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-/* POLAROID SLIDER */
-.slider {
-  display: flex;
-  transition: transform 0.6s ease;
-  align-items: center;
-}
-
+/* POLAROID IMAGE */
 .polaroid {
-  width: 25vw;           /* responsive width */
-  max-width: 300px;      /* max size for desktop */
-  height: auto;
-  margin: 0 1vw;
+  width: 100%;
+  height: 100%;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
+  transition: opacity 0.5s ease;
+  position: absolute;
 }
 
 .polaroid img {
-  width: 100%;
+  width: 90%;
   height: auto;
   border-radius: 5px;
-  display: block;
 }
 
 /* NAV BUTTONS */
@@ -71,7 +65,7 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 3vw;       /* responsive */
+  font-size: 3vw;
   cursor: pointer;
   padding: 1vw;
   background: rgba(0,0,0,0.3);
@@ -102,12 +96,10 @@ body {
 <body>
 
 <div class="container">
-  <div class="slider" id="slider">
-    <div class="polaroid"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf1.jpg"></div>
-    <div class="polaroid"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf2.jpg"></div>
-    <div class="polaroid"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf3.jpg"></div>
-    <div class="polaroid"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/41dcfb6bb93d6acee69bdfca628bd2d37e85c2dc/gf4.jpg"></div>
-  </div>
+  <div class="polaroid" id="polaroid0"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf1.jpg"></div>
+  <div class="polaroid" id="polaroid1"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf2.jpg"></div>
+  <div class="polaroid" id="polaroid2"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf3.jpg"></div>
+  <div class="polaroid" id="polaroid3"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/41dcfb6bb93d6acee69bdfca628bd2d37e85c2dc/gf4.jpg"></div>
 
   <div class="nav left" onclick="prev()">❮</div>
   <div class="nav right" onclick="next()">❯</div>
@@ -117,23 +109,28 @@ body {
 
 <script>
 let index = 0;
-const slider = document.getElementById("slider");
-const total = slider.children.length;
+const total = 4; // number of images
 
-function updateSlider() {
-  const cardWidth = slider.children[0].offsetWidth + 2*parseInt(getComputedStyle(slider.children[0]).marginLeft);
-  slider.style.transform = `translateX(-${index * cardWidth}px)`;
+function showSlide(i) {
+  for (let j=0; j<total; j++){
+    const polaroid = document.getElementById(`polaroid${j}`);
+    polaroid.style.opacity = (j===i) ? '1' : '0';
+    polaroid.style.zIndex = (j===i) ? '5' : '1';
+  }
 }
 
 function next() {
-  if(index < total - 1) index++;
-  updateSlider();
+  if(index < total-1) index++;
+  showSlide(index);
 }
 
 function prev() {
   if(index > 0) index--;
-  updateSlider();
+  showSlide(index);
 }
+
+// show first slide
+showSlide(index);
 
 /* HEART PARTICLES */
 function createHeart() {
@@ -150,7 +147,7 @@ setInterval(createHeart, 300);
 /* TYPEWRITER MESSAGE */
 const messageText = "Hi Afriza, my sayang. Im Taufiq. Sorry for not getting in touch this past week. I wanted to respect your space. I know we have been arguing about the same things until we both got tired but I hope you know how much I love you and how much I want to be with you every day. Happy National Women Day to my strong dumpling. 💐 I love you, even if we are not together right now.";
 
-let i = 0;
+let i=0;
 function typeMessage() {
   if(i < messageText.length){
     document.getElementById("message").innerHTML += messageText[i];
