@@ -2,88 +2,99 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Afriza ❤️ - Multi Page</title>
+<title>For Afriza ❤️ - Multi Page Slideshow</title>
 <style>
 body {
-  margin: 0;
-  background: #0f0f0f;
-  font-family: Arial, sans-serif;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  margin:0;
+  background:#0f0f0f;
+  font-family:Arial;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
 }
 
-/* COMMON PAGE STYLING */
+/* COMMON PAGE */
 .page {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  position:absolute;
+  width:100vw;
+  height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
 }
 
 /* PAGE 1 BUTTON */
 #page1 button {
-  padding: 20px 40px;
-  font-size: 2rem;
-  background: #ff4d6d;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
+  padding:20px 40px;
+  font-size:2rem;
+  background:#ff4d6d;
+  border:none;
+  border-radius:10px;
+  color:white;
+  cursor:pointer;
 }
 
-/* POLAROID SLIDESHOW */
+/* SLIDESHOW */
 .polaroid {
-  width: 80vw;
-  max-width: 400px;
-  height: auto;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  transition: opacity 0.5s ease;
+  width:80vw;
+  max-width:400px;
+  height:auto;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  transition:opacity 0.5s ease;
 }
 
 .polaroid img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
+  width:100%;
+  height:auto;
+  border-radius:5px;
 }
 
 /* NAV BUTTONS */
 .nav {
-  font-size: 3vw;
-  cursor: pointer;
-  padding: 1vw;
-  background: rgba(0,0,0,0.3);
-  border-radius: 50%;
-  color: white;
-  user-select: none;
-  margin-top: 20px;
+  font-size:3vw;
+  cursor:pointer;
+  padding:1vw;
+  background:rgba(0,0,0,0.3);
+  border-radius:50%;
+  color:white;
+  user-select:none;
+  margin-top:20px;
 }
 
 /* PAGE 3 MESSAGE */
 #message {
-  width: 90%;
-  text-align: center;
-  font-size: 1.5vw;
-  backdrop-filter: blur(5px);
-  padding: 2vh;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-  border-radius: 10px;
-  max-height: 70vh;
-  overflow-y: auto;
+  width:90%;
+  text-align:center;
+  font-size:1.5vw;
+  backdrop-filter:blur(5px);
+  padding:2vh;
+  color:white;
+  text-shadow:1px 1px 4px rgba(0,0,0,0.8);
+  border-radius:10px;
+  max-height:70vh;
+  overflow-y:auto;
+}
+
+/* HEART */
+.heart {
+  position:absolute;
+  color:#ff4d6d;
+  animation:float 6s linear infinite;
+}
+@keyframes float {
+  0% {transform:translateY(100vh) scale(0.5); opacity:1;}
+  100% {transform:translateY(-10vh) scale(1.5); opacity:0;}
 }
 </style>
 </head>
@@ -94,13 +105,13 @@ body {
   <button onclick="goToPage(2)">Sayang 💖</button>
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 SLIDESHOW -->
 <div class="page" id="page2">
   <div class="polaroid" id="polaroid0"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf1.jpg"></div>
   <div class="polaroid" id="polaroid1"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf2.jpg"></div>
   <div class="polaroid" id="polaroid2"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf3.jpg"></div>
   <div class="polaroid" id="polaroid3"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/41dcfb6bb93d6acee69bdfca628bd2d37e85c2dc/gf4.jpg"></div>
-  
+
   <div style="display:flex; gap:20px; margin-top:20px;">
     <div class="nav" onclick="prevSlide()">❮ Prev</div>
     <div class="nav" onclick="nextSlide()">Next ❯</div>
@@ -108,7 +119,7 @@ body {
   </div>
 </div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 MESSAGE -->
 <div class="page" id="page3">
   <div id="message"></div>
 </div>
@@ -118,27 +129,28 @@ body {
 function goToPage(n){
   document.querySelectorAll('.page').forEach(p => p.style.display='none');
   document.getElementById('page'+n).style.display='flex';
+  if(n===3) typeMessage();   // start typewriter on page 3
 }
 
 /* SLIDESHOW */
-let slideIndex = 0;
-const totalSlides = 4;
+let slideIndex=0;
+const totalSlides=4;
 
 function showSlide(i){
-  for(let j=0; j<totalSlides; j++){
-    const p = document.getElementById('polaroid'+j);
-    p.style.opacity = (j===i)? '1' : '0';
-    p.style.zIndex = (j===i)? '5' : '1';
+  for(let j=0;j<totalSlides;j++){
+    const p=document.getElementById('polaroid'+j);
+    p.style.opacity=(j===i)? '1':'0';
+    p.style.zIndex=(j===i)? '5':'1';
   }
 }
 
 function nextSlide(){
-  if(slideIndex < totalSlides-1) slideIndex++;
+  if(slideIndex<totalSlides-1) slideIndex++;
   showSlide(slideIndex);
 }
 
 function prevSlide(){
-  if(slideIndex > 0) slideIndex--;
+  if(slideIndex>0) slideIndex--;
   showSlide(slideIndex);
 }
 
@@ -146,20 +158,21 @@ function prevSlide(){
 showSlide(slideIndex);
 
 /* TYPEWRITER MESSAGE */
-const messageText = "Hi Afriza, my sayang. Im Taufiq. Sorry for not getting in touch this past week. I wanted to respect your space. I know we have been arguing about the same things until we both got tired but I hope you know how much I love you and how much I want to be with you every day. Happy National Women Day to my strong dumpling. 💐 I love you, even if we are not together right now.";
+const messageText="Hi Afriza, my sayang. Im Taufiq. Sorry for not getting in touch this past week. I wanted to respect your space. I know we have been arguing about the same things until we both got tired but I hope you know how much I love you and how much I want to be with you every day. Happy National Women Day to my strong dumpling. 💐 I love you, even if we are not together right now.";
 
 let i=0;
 function typeMessage(){
-  if(i < messageText.length){
-    document.getElementById('message').innerHTML += messageText[i];
+  const el=document.getElementById('message');
+  if(i<messageText.length){
+    el.innerHTML+=messageText[i];
     i++;
-    setTimeout(typeMessage, 40);
+    setTimeout(typeMessage,40);
   }
 }
 
 /* HEART PARTICLES */
 function createHeart(){
-  const heart = document.createElement('div');
+  const heart=document.createElement('div');
   heart.className='heart';
   heart.innerHTML='❤️';
   heart.style.left=Math.random()*100+'vw';
@@ -168,9 +181,7 @@ function createHeart(){
   setTimeout(()=>heart.remove(),6000);
 }
 setInterval(createHeart,300);
-
-// start typewriter when page 3 is opened
-document.getElementById('page3').addEventListener('display', typeMessage);
 </script>
+
 </body>
 </html>
