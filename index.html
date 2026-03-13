@@ -1,131 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Nur Afriza binti Zainuddin ❤️</title>
-    <style>
-        :root {
-            --primary: #ff4d6d;
-            --bg: #0f0f0f;
-            --glass: rgba(255, 255, 255, 0.1);
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Nur Afriza binti Zainuddin ❤️</title>
+<style>
+  :root {
+    --primary: #ff4d6d;
+    --bg: #0f0f0f;
+    --glass: rgba(255, 255, 255, 0.1);
+  }
 
-        body {
-            margin: 0;
-            background: var(--bg);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  body {
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-        /* Smooth Page Transitions */
-        .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+  /* Smooth Page Transitions */
+  .page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-        .active { display: flex; opacity: 1; }
+  .active { display: flex; opacity: 1; }
 
-        /* Pulsing Start Button */
-        .start-btn {
-            padding: 20px 50px;
-            font-size: 1.5rem;
-            background: var(--primary);
-            border: none;
-            border-radius: 50px;
-            color: white;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
-            animation: pulse 2s infinite;
-        }
+  /* Pulsing Start Button */
+  .start-btn {
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    background: var(--primary);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+    animation: pulse 2s infinite;
+  }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
-        }
+  @keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
+  }
 
-        /* Modern Polaroid */
-        .slideshow-container {
-            position: relative;
-            width: 320px;
-            height: 400px;
-        }
+  /* Modern Polaroid */
+  .slideshow-container {
+    position: relative;
+    width: 320px;
+    height: 400px;
+  }
 
-        .polaroid {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            background: white;
-            padding: 15px 15px 40px 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            transform: rotate(-2deg);
-            transition: all 0.5s ease;
-            opacity: 0;
-        }
+  .polaroid {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    background: white;
+    padding: 15px 15px 40px 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    transform: rotate(-2deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+  }
 
-        .polaroid img { width: 100%; height: 300px; object-fit: cover; }
+  .polaroid img { width: 100%; height: 300px; object-fit: cover; }
 
-        .polaroid.active-slide { opacity: 1; transform: rotate(0deg) scale(1.05); z-index: 10; }
+  .polaroid.active-slide { opacity: 1; transform: rotate(0deg) scale(1.05); z-index: 10; }
 
-        /* Navigation */
-        .nav-container { margin-top: 50px; display: flex; gap: 15px; }
-        
-        .nav-btn {
-            background: var(--glass);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 10px 20px;
-            border-radius: 20px;
-            color: white;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-        }
+  /* Navigation */
+  .nav-container { margin-top: 50px; display: flex; gap: 15px; }
+  
+  .nav-btn {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+  }
 
-        .nav-btn:hover { background: var(--primary); }
+  .nav-btn:hover { background: var(--primary); }
 
-        /* Message Area */
-        #message {
-            max-width: 600px;
-            line-height: 1.8;
-            font-size: 1.2rem;
-            background: var(--glass);
-            padding: 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+  /* Message Area */
+  #message {
+    max-width: 600px;
+    line-height: 1.8;
+    font-size: 1.2rem;
+    background: var(--glass);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
 
-        /* Floating Hearts */
-        .heart {
-            position: absolute;
-            pointer-events: none;
-            z-index: -1;
-            animation: float Up 6s linear forwards;
-        }
+  /* Floating Hearts */
+  .heart {
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+    animation: floatUp 6s linear forwards;
+  }
 
-        @keyframes floatUp {
-            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-    </style>
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* New Section for Love Message */
+  #loveMessageSection {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 15, 15, 0.9);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    overflow: auto;
+    z-index: 100;
+    transition: opacity 1s ease;
+  }
+
+  #loveMessageSection.show {
+    display: flex;
+    opacity: 1;
+  }
+
+  #loveMessage {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Her picture style */
+  #herPic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    margin-top: 20px;
+    animation: pulse 3s infinite;
+  }
+</style>
 </head>
 <body>
 
+<!-- Existing pages -->
 <div class="page active" id="page1">
     <h1 style="margin-bottom: 30px;">For my favorite person...</h1>
     <button class="start-btn" onclick="goToPage(2)">Bukaa laaaa </button>
@@ -138,7 +183,6 @@
         <div class="polaroid" id="s2"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/a95e509e869fdbc6b35deec6793e817c8beff728/gf3.jpg"></div>
         <div class="polaroid" id="s3"><img src="https://raw.githubusercontent.com/wafiqkidal-ui/Dumpling1/41dcfb6bb93d6acee69bdfca628bd2d37e85c2dc/gf4.jpg"></div>
     </div>
-
     <div class="nav-container">
         <button class="nav-btn" onclick="changeSlide(-1)">❮</button>
         <button class="nav-btn" onclick="changeSlide(1)">❯</button>
@@ -151,50 +195,75 @@
     <p style="margin-top: 20px; font-style: italic; opacity: 0.8;">— Yours, Taufiq</p>
 </div>
 
+<!-- New Love Message Section -->
+<div id="loveMessageSection">
+  <div id="loveMessage">💖 BIG LOVE & SURPRISE 💖</div>
+  <div>
+    <p style="font-size:1.5rem; margin-bottom:20px;">I'm sorry, my dear. I never stopped loving you. I want us to be together again.</p>
+    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.1&auto=format&fit=crop&w=400&q=80" alt="Her Picture" id="herPic" />
+    <p style="margin-top:20px; font-size:1.2rem;">Because I love you so much, I want to get back with you.</p>
+    <button class="nav-btn" style="margin-top:30px;" onclick="hideLoveMessage()">Close</button>
+  </div>
+</div>
+
 <script>
-    function goToPage(n) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        const next = document.getElementById('page' + n);
-        next.style.display = 'flex';
-        setTimeout(() => next.classList.add('active'), 50);
-        if(n === 3) typeMessage();
+  function goToPage(n) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const next = document.getElementById('page' + n);
+    next.style.display = 'flex';
+    setTimeout(() => next.classList.add('active'), 50);
+    if(n === 3) typeMessage();
+  }
+
+  let currentSlide = 0;
+  const totalSlides = 4;
+
+  function changeSlide(direction) {
+    document.getElementById('s' + currentSlide).classList.remove('active-slide');
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    document.getElementById('s' + currentSlide).classList.add('active-slide');
+  }
+
+  const messageText = "Hi Afriza, my sayang. It is Taufiq.\n\nI am sorry for the silence this week. I wanted to give you space. I know we are tired from the arguments but I want to be with you every day.\n\nI have seen you grow from an intern, through your studies and to your win competition. I am so proud of you. Our journey has had ups and downs but my love has never changed.\n\nHappy National Women Day to my strong dumpling. I miss you and I love you, even if we are not together right now.";
+
+  let charIndex = 0;
+  function typeMessage() {
+    const el = document.getElementById('message');
+    if (charIndex < messageText.length) {
+      el.innerHTML += messageText[charIndex] === "\n" ? "<br>" : messageText[charIndex];
+      charIndex++;
+      setTimeout(typeMessage, 50);
     }
+  }
 
-    let currentSlide = 0;
-    const totalSlides = 4;
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = ['❤️', '💖', '🌸', '✨'][Math.floor(Math.random() * 4)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+    heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 400);
 
-    function changeSlide(direction) {
-        document.getElementById('s' + currentSlide).classList.remove('active-slide');
-        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-        document.getElementById('s' + currentSlide).classList.add('active-slide');
-    }
+  // Functions for Love Message Section
+  function showLoveMessage() {
+    const section = document.getElementById('loveMessageSection');
+    section.classList.add('show');
+  }
 
-    const messageText = "Hi Afriza, my sayang. It is Taufiq.\n\nI am sorry for the silence this week. I wanted to give you space. I know we are tired from the arguments but I want to be with you every day.\n\nI have seen you grow from an intern, through your studies and to your win competition. I am so proud of you. Our journey has had ups and downs but my love has never changed.\n\nHappy National Women Day to my strong dumpling. I miss you and I love you, even if we are not together right now.";
+  function hideLoveMessage() {
+    const section = document.getElementById('loveMessageSection');
+    section.classList.remove('show');
+  }
 
-    let charIndex = 0;
-    function typeMessage() {
-        const el = document.getElementById('message');
-        if (charIndex < messageText.length) {
-            el.innerHTML += messageText[charIndex] === "\n" ? "<br>" : messageText[charIndex];
-            charIndex++;
-            setTimeout(typeMessage, 50);
-        }
-    }
-
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = ['❤️', '💖', '🌸', '✨'][Math.floor(Math.random() * 4)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-        heart.style.animationDuration = Math.random() * 3 + 3 + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-    }
-    setInterval(createHeart, 400);
+  // Show the love message after a delay or on a specific event
+  // For example, after some seconds or a button click
+  // Here, we automatically show it after 5 seconds for demonstration
+  setTimeout(showLoveMessage, 5000);
 </script>
 
 </body>
 </html>
-
-
